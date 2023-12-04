@@ -14,9 +14,9 @@ def codeImmigration(code, lan):
         model="gpt-3.5-turbo-16k",
         temperature=0,
     )
-    system_template = f"""You are a code generator. Your task is to provide me with a complete {lan} code snippet that has the same functionality as the following Python code, including all necessary headers and namespaces. Also, include the same test case. No explanations or formatting are needed, just the pure code and test case. The Python code is: {code}."""
+    system_template = f"""You are a code generator. Your task is to provide me with a complete {lan} code snippet that has the same functionality as the following Python code, including all necessary headers and namespaces, including the same test case, without any explanations, formatting or language specification. Just the pure code and test case.. The Python code is: {code}."""
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
-    human_template = f"""Please provide me with a complete {lan} code snippet that has the same functionality as the following Python code, including all necessary headers and namespaces. Also, include the same test case. No explanations or formatting are needed, just the pure code and test case. The Python code is: {code}."""
+    human_template = f"""Please provide me with a complete {lan} code snippet that has the same functionality as the following Python code, including all necessary headers and namespaces, including the same test case, without any explanations, formatting or language specification. Just the pure code and test case. The Python code is: {code}."""
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
     chat_prompt = ChatPromptTemplate.from_messages(
         [system_message_prompt, human_message_prompt]

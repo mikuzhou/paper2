@@ -15,9 +15,9 @@ def codeGenerator(times, difficulty, do_what):
         model="gpt-3.5-turbo-16k",
         temperature=0,
     )
-    system_template = f"""You are a code generator. This is the {times} time I asked you. Your task is to give me a python function for a different {difficulty} difficulty problem from LeetCode that is not {do_what}-optimal, along with a test case, without any explanations, formatting or language specification. Just the pure code and test case."""
+    system_template = f"""You are a code generator. This is the {times} time I asked you. Your task is to give me a python function for a different ever {difficulty} difficulty problem from LeetCode that is not {do_what}-optimal, along with a test case, without any explanations, formatting or language specification. Just the pure code and test case."""
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
-    human_template = f"""This is the {times} time I asked you. Please give me a python function for a unique {difficulty} difficulty problem from LeetCode that is not {do_what}-optimal, along with a test case, without any explanations, formatting or language specification. Just the pure code and test case."""
+    human_template = f"""This is the {times} time I asked you. Please give me a python function for a different ever {difficulty} difficulty problem from LeetCode that is not {do_what}-optimal, along with a test case, without any explanations, formatting or language specification. Just the pure code and test case."""
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
     chat_prompt = ChatPromptTemplate.from_messages(
         [system_message_prompt, human_message_prompt]
