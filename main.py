@@ -15,7 +15,6 @@ def med_time_prob():
     global times
     code1 = util.problem_generator.codeGenerator(times, "medium", "time")
     times += 1
-    print(code1)
     code2 = util.modification.codeModification(code1, "time")
     time_all = [999,999]
     if util.compare_pyres.compare_code_output(code1, code2):
@@ -31,12 +30,9 @@ def med_mem_prob():
     global times
     code1 = util.problem_generator.codeGenerator(times, "medium", "space")
     times += 1
-    print(code1)
     code2 = util.modification.codeModification(code1, "space")
-    print(code2)
     mem_all = [999,999]
     if util.compare_pyres.compare_code_output(code1, code2):
-        print(util.compare_pyres.compare_code_output(code1, code2))
         mem_all = util.memory_compare.compare_memory_usage(code1, code2)
         flag = mem_all[0]>mem_all[1]
     else:
@@ -79,9 +75,7 @@ def med_immi():
     global times
     code1 = util.problem_generator.codeGenerator(times, "medium", "memory")
     times += 1
-    print(code1)
     code2 = util.immigration.codeImmigration(code1, "c++")
-    print(code2)
     flag = util.compare_res.compile_and_compare(code2, code1)
     need_to_be_written = [str(flag), "Medium", "ImmiToC++"]
     return need_to_be_written
