@@ -13,8 +13,7 @@ def time_execution(code1, code2, setup=""):
     start_time = time.time()
     exec(code2)
     time2 = time.time() - start_time
-
-    if time1>=time2:
-        return True
-    else:
-        return False
+    time_all = []
+    time_all.append(time1)
+    time_all.append(time2)
+    return time_all

@@ -9,55 +9,75 @@ import util.memory_compare
 import util.problem_generator
 import argparse
 
-
+times = 1
 def med_time_prob():
-    code1 = util.problem_generator.codeGenerator("medium", "time")
+    global times
+    code1 = util.problem_generator.codeGenerator(times, "medium", "time")
+    times += 1
     print(code1)
     code2 = util.modification.codeModification(code1, "time")
+    time_all = [999,999]
     if util.compare_pyres.compare_code_output(code1, code2):
-        flag = util.time_compare.time_execution(code1, code2)
+        time_all = util.time_compare.time_execution(code1, code2)
+        flag = time_all[0]>time_all[1]
     else:
         flag = False
-    need_to_be_written = [str(flag), "Medium", "Time"]
+    need_to_be_written = [str(flag), "Medium", "Time", str(time_all[0]), str(time_all[1])]
     return need_to_be_written
 
 
 def med_mem_prob():
-    code1 = util.problem_generator.codeGenerator("medium", "space")
+    global times
+    code1 = util.problem_generator.codeGenerator(times, "medium", "space")
+    times += 1
     print(code1)
     code2 = util.modification.codeModification(code1, "space")
+    print(code2)
+    mem_all = [999,999]
     if util.compare_pyres.compare_code_output(code1, code2):
-        flag = util.time_compare.time_execution(code1, code2)
+        print(util.compare_pyres.compare_code_output(code1, code2))
+        mem_all = util.memory_compare.compare_memory_usage(code1, code2)
+        flag = mem_all[0]>mem_all[1]
     else:
         flag = False
-    need_to_be_written = [str(flag), "Medium", "Memory"]
+    need_to_be_written = [str(flag), "Medium", "Memory", str(mem_all[0]), str(mem_all[1])]
     return need_to_be_written
 
 
 def hard_time_prob():
-    code1 = util.problem_generator.codeGenerator("hard", "time")
+    global times
+    code1 = util.problem_generator.codeGenerator(times, "hard", "time")
+    times += 1
     code2 = util.modification.codeModification(code1, "time")
+    time_all = [999,999]
     if util.compare_pyres.compare_code_output(code1, code2):
-        flag = util.time_compare.time_execution(code1, code2)
+        time_all = util.time_compare.time_execution(code1, code2)
+        flag = time_all[0]>time_all[1]
     else:
         flag = False
-    need_to_be_written = [str(flag), "Hard", "Time"]
+    need_to_be_written = [str(flag), "Hard", "Time", str(time_all[0]), str(time_all[1])]
     return need_to_be_written
 
 
 def hard_mem_prob():
-    code1 = util.problem_generator.codeGenerator("hard", "space")
+    global times
+    code1 = util.problem_generator.codeGenerator(times, "hard", "space")
+    times += 1
     code2 = util.modification.codeModification(code1, "space")
+    mem_all = [999,999]
     if util.compare_pyres.compare_code_output(code1, code2):
-        flag = util.time_compare.time_execution(code1, code2)
+        mem_all = util.memory_compare.compare_memory_usage(code1, code2)
+        flag = mem_all[0]>mem_all[1]
     else:
         flag = False
-    need_to_be_written = [str(flag), "Hard", "Memory"]
+    need_to_be_written = [str(flag), "Hard", "Memory", str(mem_all[0]), str(mem_all[1])]
     return need_to_be_written
 
 
 def med_immi():
-    code1 = util.problem_generator.codeGenerator("medium", "memory")
+    global times
+    code1 = util.problem_generator.codeGenerator(times, "medium", "memory")
+    times += 1
     print(code1)
     code2 = util.immigration.codeImmigration(code1, "c++")
     print(code2)
@@ -67,7 +87,10 @@ def med_immi():
 
 
 def hard_immi():
-    code1 = util.problem_generator.codeGenerator("hard", "memory")
+    global times
+    code1 = util.problem_generator.codeGenerator(times, "hard", "memory")
+    times += 1
+    times+=1
     code2 = util.immigration.codeImmigration(code1, "c++")
     flag = util.compare_res.compile_and_compare(code2, code1)
     need_to_be_written = [str(flag), "Hard", "ImmiToC++"]
@@ -112,8 +135,8 @@ def main():
         except RuntimeError as e:
             immi_data.append(["False", "Hard", "codeToC++"])
         i += 1
-    util.write_tocsv.write_to_csv(file_name1, time_data)
-    util.write_tocsv.write_to_csv(file_name2, mem_data)
+    util.write_tocsvcmp.write_to_csv(file_name1, time_data)
+    util.write_tocsvcmp.write_to_csv(file_name2, mem_data)
     util.write_tocsv.write_to_csv(file_name3, immi_data)
 
     # print(util.fancy_code.pythonCodeGenerator(2,3,4))
