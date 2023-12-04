@@ -77,7 +77,7 @@ def med_immi():
     times += 1
     code2 = util.immigration.codeImmigration(code1, "c++")
     flag = util.compare_res.compile_and_compare(code2, code1)
-    need_to_be_written = [str(flag), "Medium", "ImmiToC++"]
+    need_to_be_written = [str(flag), "Medium",  "Immigration", "Python", "C++"]
     return need_to_be_written
 
 
@@ -88,7 +88,7 @@ def hard_immi():
     times+=1
     code2 = util.immigration.codeImmigration(code1, "c++")
     flag = util.compare_res.compile_and_compare(code2, code1)
-    need_to_be_written = [str(flag), "Hard", "ImmiToC++"]
+    need_to_be_written = [str(flag), "Hard",  "Immigration", "Python", "C++"]
     return need_to_be_written
 
 
@@ -115,7 +115,7 @@ def main():
         try:
             immi_data.append(med_immi())
         except RuntimeError as e:
-            immi_data.append(["False", "Medium", "codeToC++"])
+            immi_data.append(["False", "Medium", "Immigration", "Python", "C++"])
         print(time_data)
         print(mem_data)
         print(immi_data)
@@ -129,11 +129,11 @@ def main():
         try:
             immi_data.append(med_immi())
         except RuntimeError as e:
-            immi_data.append(["False", "Hard", "codeToC++"])
+            immi_data.append(["False", "Hard",  "Immigration", "Python", "C++"])
         i += 1
     util.write_tocsvcmp.write_to_csv(file_name1, time_data)
     util.write_tocsvcmp.write_to_csv(file_name2, mem_data)
-    util.write_tocsv.write_to_csv(file_name3, immi_data)
+    util.write_tocsvcmp.write_to_csv(file_name3, immi_data)
 
     # print(util.fancy_code.pythonCodeGenerator(2,3,4))
 
