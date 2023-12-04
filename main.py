@@ -7,6 +7,7 @@ import util.time_compare
 import util.compare_pyres
 import util.memory_compare
 import util.problem_generator
+import collections
 import argparse
 
 times = 1
@@ -114,8 +115,9 @@ def main():
     while i < 10:
         print("new round")
         print(i)
-        time_data.append(med_time_prob())
         mem_data.append(med_mem_prob())
+        time_data.append(med_time_prob())
+
         try:
             immi_data.append(med_immi())
         except RuntimeError as e:
