@@ -106,7 +106,7 @@ def easy_immi():
     times += 1
     code2 = util.immigration.codeImmigration(code1, "c++")
     flag = util.compare_res.compile_and_compare(code2, code1)
-    need_to_be_written = [str(flag), "Easy",  "Immigration", "Python", "C++"]
+    need_to_be_written = [str(flag), "Easy",  "Migration", "Python", "C++"]
     return need_to_be_written
 def med_immi():
     global times
@@ -114,7 +114,7 @@ def med_immi():
     times += 1
     code2 = util.immigration.codeImmigration(code1, "c++")
     flag = util.compare_res.compile_and_compare(code2, code1)
-    need_to_be_written = [str(flag), "Medium",  "Immigration", "Python", "C++"]
+    need_to_be_written = [str(flag), "Medium",  "Migration", "Python", "C++"]
     return need_to_be_written
 
 
@@ -125,7 +125,7 @@ def hard_immi():
     times+=1
     code2 = util.immigration.codeImmigration(code1, "c++")
     flag = util.compare_res.compile_and_compare(code2, code1)
-    need_to_be_written = [str(flag), "Hard",  "Immigration", "Python", "C++"]
+    need_to_be_written = [str(flag), "Hard",  "Migration", "Python", "C++"]
     return need_to_be_written
 
 
@@ -152,7 +152,7 @@ def main():
         try:
             immi_data.append(easy_immi())
         except RuntimeError as e:
-            immi_data.append(["False", "Easy", "Immigration", "Python", "C++"])
+            immi_data.append(["False", "Easy", "Migration", "Python", "C++"])
         print(time_data)
         print(mem_data)
         print(immi_data)
@@ -167,7 +167,7 @@ def main():
         try:
             immi_data.append(med_immi())
         except RuntimeError as e:
-            immi_data.append(["False", "Medium", "Immigration", "Python", "C++"])
+            immi_data.append(["False", "Medium", "Migration", "Python", "C++"])
         print(time_data)
         print(mem_data)
         print(immi_data)
@@ -181,7 +181,7 @@ def main():
         try:
             immi_data.append(med_immi())
         except RuntimeError as e:
-            immi_data.append(["False", "Hard",  "Immigration", "Python", "C++"])
+            immi_data.append(["False", "Hard",  "Migration", "Python", "C++"])
         i += 1
     util.write_tocsvcmp.write_to_csv(file_name1, time_data)
     util.write_tocsvcmp.write_to_csv(file_name2, mem_data)
